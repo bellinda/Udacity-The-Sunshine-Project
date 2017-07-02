@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pref_unit_option_labels">
+        <item>@string/pref_unit_celsius_label</item>
+        <item>@string/pref_unit_far_label</item>
+    </array>
+
+    <array name="pref_unit_option_values">
+        <item>@string/pref_unit_celsius_value</item>
+        <item>@string/pref_unit_far_value</item>
+    </array>
+</resources>

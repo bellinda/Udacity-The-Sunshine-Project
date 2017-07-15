@@ -7,6 +7,7 @@ import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import angelova.gabriela.thesunshineproject.data.WeatherContract;
@@ -63,8 +64,15 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         double low = mCursor.getDouble(lowIndex);
         String highAndLowTemperature = SunshineWeatherUtils.formatHighLows(mContext, high, low);
 
+        // Replace the single TextView with Views to display all of the weather info
+
         String weatherForThisDay = String.format("%s - %s - %s", dateString, description, highAndLowTemperature);
-        holder.mWeatherTextView.setText(weatherForThisDay);
+        holder.mDateTextView.setText(dateString);
+        holder.mWeatherDescriptionTextView.setText(description);
+        holder.mMinTempTextView.setText(SunshineWeatherUtils.formatTemperature(mContext, low));
+        holder.mMaxTempTextView.setText(SunshineWeatherUtils.formatTemperature(mContext, high));
+        int weatherImageId = SunshineWeatherUtils.getSmallArtResourceIdForWeatherCondition(weatherId);
+        holder.mWeatherIconImageView.setImageResource(weatherImageId);
     }
 
     @Override
@@ -91,12 +99,24 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     }
 
     public class ForecastAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        //  Replace the weatherSummary TextView with individual weather detail TextViews
+        final TextView mDateTextView;
+        final TextView mWeatherDescriptionTextView;
+        final TextView mMinTempTextView;
+        final TextView mMaxTempTextView;
 
-        final public TextView mWeatherTextView;
+        // Add an ImageView for the weather icon
+        public ImageView mWeatherIconImageView;
 
         public ForecastAdapterViewHolder(View itemView) {
             super(itemView);
-            mWeatherTextView = (TextView)itemView.findViewById(R.id.tv_weather_data);
+            // Get references to all new views and delete this line
+            mWeatherIconImageView = (ImageView) itemView.findViewById(R.id.weather_icon);
+            mDateTextView = (TextView) itemView.findViewById(R.id.date);
+            mWeatherDescriptionTextView = (TextView) itemView.findViewById(R.id.weather_description);
+            mMaxTempTextView = (TextView) itemView.findViewById(R.id.max_temp);
+            mMinTempTextView = (TextView) itemView.findViewById(R.id.min_temp);
+
             itemView.setOnClickListener(this);
         }
 

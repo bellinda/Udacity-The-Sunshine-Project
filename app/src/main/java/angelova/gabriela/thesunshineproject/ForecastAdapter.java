@@ -1,6 +1,7 @@
 package angelova.gabriela.thesunshineproject;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -20,24 +21,43 @@ import angelova.gabriela.thesunshineproject.utilities.SunshineWeatherUtils;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapterViewHolder> {
 
+    // Declare constant IDs for the ViewType for today and for a future day
+    private static final int VIEW_TYPE_TODAY = 0;
+    private static final int VIEW_TYPE_FUTURE_DAY = 1;
+
     final private Context mContext;
     private Cursor mCursor;
     final private ForecastAdapterOnClickHandler mClickHandler;
+    //  Declare a private boolean called mUseTodayLayout
+    private boolean mUseTodayLayout;
 
     public interface ForecastAdapterOnClickHandler {
         public void onClick(long weatherForDay);
     }
 
-
     public ForecastAdapter(ForecastAdapterOnClickHandler listener, Context context ) {
         mClickHandler = listener;
         mContext = context;
+        // Set mUseTodayLayout to the value specified in resources
+        mUseTodayLayout = mContext.getResources().getBoolean(R.bool.use_today_layout);
     }
 
     @Override
     public ForecastAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        int layoutIdForListItem;
+        //  If the view type of the layout is today, use today layout
+        if(viewType == VIEW_TYPE_TODAY) {
+            layoutIdForListItem = R.layout.list_item_forecast_today;
+        } else if(viewType == VIEW_TYPE_FUTURE_DAY) {
+            // If the view type of the layout is future day, use future day layout
+            layoutIdForListItem = R.layout.forecast_list_item;
+        } else {
+            // Otherwise, throw an IllegalArgumentException
+            throw new IllegalArgumentException("No appropriate view type specified");
+        }
+
         Context context = parent.getContext();
-        int layoutIdForListItem = R.layout.forecast_list_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
@@ -71,7 +91,18 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         holder.mWeatherDescriptionTextView.setText(description);
         holder.mMinTempTextView.setText(SunshineWeatherUtils.formatTemperature(mContext, low));
         holder.mMaxTempTextView.setText(SunshineWeatherUtils.formatTemperature(mContext, high));
-        int weatherImageId = SunshineWeatherUtils.getSmallArtResourceIdForWeatherCondition(weatherId);
+        // If the view type of the layout is today, display a large icon
+        int viewType = getItemViewType(position);
+        int weatherImageId;
+        if(viewType == VIEW_TYPE_TODAY) {
+            weatherImageId = SunshineWeatherUtils.getLargeArtResourceIdForWeatherCondition(weatherId);
+        } else if (viewType == VIEW_TYPE_FUTURE_DAY) {
+            // If the view type of the layout is future day, display a small icon
+            weatherImageId = SunshineWeatherUtils.getSmallArtResourceIdForWeatherCondition(weatherId);
+        } else {
+            // Otherwise, throw an IllegalArgumentException
+            throw new IllegalArgumentException("No appropriate view type provided");
+        }
         holder.mWeatherIconImageView.setImageResource(weatherImageId);
     }
 
@@ -81,6 +112,18 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
             return 0;
         }
         return mCursor.getCount();
+    }
+
+    //  Override getItemViewType
+    @Override
+    public int getItemViewType(int position) {
+        // Within getItemViewType, if mUseTodayLayout is true and position is 0, return the ID for today viewType
+        if(mUseTodayLayout && position == 0) {
+            return VIEW_TYPE_TODAY;
+        } else {
+            // Otherwise, return the ID for future day viewType
+            return VIEW_TYPE_FUTURE_DAY;
+        }
     }
 
     public Cursor swapCursor(Cursor cursor) {

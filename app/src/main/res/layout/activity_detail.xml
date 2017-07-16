@@ -1,41 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_date"/>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_description"/>
+        android:layout_height="match_parent">
 
-    <TextView
+    <!-- Include the primary_weather_info layout -->
+    <include
+        android:id="@+id/primary_weather_info"
+        layout="@layout/primary_weather_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_high_temperature"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
+    <!-- Include the extra_weather_details layout -->
+    <include
+        android:id = "@+id/extra_weather_detail"
+        layout="@layout/extra_weather_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_low_temperature"/>
+        android:layout_height="0dp"
+        android:layout_weight = "1"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_humidity"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_presure"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_wind"/>
-</LinearLayout>
+    </LinearLayout>
+</layout>

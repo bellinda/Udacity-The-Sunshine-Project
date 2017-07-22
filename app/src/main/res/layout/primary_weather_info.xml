@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- Color the description, high temperature, and low temperature appropriately -->
+<!-- Replace dimension values with @dimen resources -->
+<!-- Use sans-serif-light font family for the temperature TextViews -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -24,17 +26,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/date"
             tools:text="Today, April 03"
-            android:textSize="20sp"
+            android:textSize="@dimen/forecast_text_size"
             app:layout_constraintBottom_toTopOf="@+id/weather_icon"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginBottom="@dimen/today_forecast_list_item_vertical_padding"
+            android:layout_marginTop="@dimen/today_forecast_list_item_vertical_padding"/>
 
         <ImageView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="@dimen/today_icon"
+            android:layout_height="@dimen/today_icon"
             android:id= "@+id/weather_icon"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +53,8 @@
             app:layout_constraintLeft_toLeftOf="@id/weather_icon"
             app:layout_constraintRight_toRightOf="@id/weather_icon"
             android:textSize="18sp"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:textColor="@color/secondary_text" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +65,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:textSize = "72sp"/>
+            android:textSize = "72sp"
+            android:textColor="@color/primary_text"
+            android:fontFamily="sans-serif-light"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,7 +77,9 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/weather_description"
             app:layout_constraintLeft_toLeftOf="@+id/max_temp"
             app:layout_constraintRight_toRightOf="@+id/max_temp"
-            android:textSize="36sp"/>
+            android:textSize="36sp"
+            android:textColor="@color/secondary_text"
+            android:fontFamily="Use sans-serif-light"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Color the background and label text color appropriately -->
+<!-- Replace dimension values with @dimen resources -->
+<!-- Use sans-serif font family for label TextViews -->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +11,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?android:attr/listPreferredItemHeight">
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:background="@color/detail_accent_pane_background">
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
@@ -26,10 +30,12 @@
             android:id="@+id/humidity_label"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"/>
+            android:layout_marginLeft="@dimen/forecast_detail_horizontal_padding"
+            android:layout_marginStart="@dimen/forecast_detail_horizontal_padding"
+            android:layout_marginTop="@dimen/forecast_detail_vertical_padding"
+            android:textSize="@dimen/forecast_text_size"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/detail_accent_label"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,7 +44,8 @@
             android:id="@+id/humidity"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintBaseline_toBaselineOf="@+id/humidity_label"
-            android:textSize = "24sp"/>
+            android:textSize = "@dimen/forecast_text_size"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,10 +54,12 @@
             android:id="@+id/pressure_label"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/humidity_label"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
-            android:textSize="24sp"/>
+            android:layout_marginLeft="@dimen/forecast_detail_horizontal_padding"
+            android:layout_marginStart="@dimen/forecast_detail_horizontal_padding"
+            android:layout_marginTop="@dimen/forecast_detail_upper_padding"
+            android:textSize="@dimen/forecast_text_size"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/detail_accent_label"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,7 +68,8 @@
             android:id="@+id/pressure"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintBaseline_toBaselineOf="@+id/pressure_label"
-            android:textSize = "24sp"/>
+            android:textSize = "@dimen/forecast_text_size"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,10 +78,12 @@
             android:id="@+id/wind_label"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/pressure_label"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
-            android:textSize="24sp"/>
+            android:layout_marginLeft="@dimen/forecast_detail_horizontal_padding"
+            android:layout_marginStart="@dimen/forecast_detail_horizontal_padding"
+            android:layout_marginTop="@dimen/forecast_detail_upper_padding"
+            android:textSize="@dimen/forecast_text_size"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/detail_accent_label"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,7 +92,8 @@
             android:id="@+id/wind"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintBaseline_toBaselineOf="@+id/wind_label"
-            android:textSize = "24sp"/>
+            android:textSize = "@dimen/forecast_text_size"
+            android:textColor="@color/white"/>
 
     </android.support.constraint.ConstraintLayout>
 

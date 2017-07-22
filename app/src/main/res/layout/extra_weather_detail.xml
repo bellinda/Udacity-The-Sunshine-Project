@@ -23,9 +23,8 @@
             tools:layout_editor_absoluteX="192dp"
             tools:layout_editor_absoluteY="0dp"/>
 
+        <!-- Replace the appropriate attributes with the DetailLabel style -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/humidity_label"
             android:id="@+id/humidity_label"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -34,22 +33,19 @@
             android:layout_marginStart="@dimen/forecast_detail_horizontal_padding"
             android:layout_marginTop="@dimen/forecast_detail_vertical_padding"
             android:textSize="@dimen/forecast_text_size"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/detail_accent_label"/>
+            style="@style/DetailLabel"/>
 
+        <!-- Replace the appropriate attributes with the ExtraWeatherMeasurement style -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             tools:text="78%"
             android:id="@+id/humidity"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintBaseline_toBaselineOf="@+id/humidity_label"
             android:textSize = "@dimen/forecast_text_size"
-            android:textColor="@color/white"/>
+            style="@style/ExtraWeatherMeasurement"/>
 
+        <!-- Replace the appropriate attributes with the DetailLabel style -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/pressure_label"
             android:id="@+id/pressure_label"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -58,22 +54,19 @@
             android:layout_marginStart="@dimen/forecast_detail_horizontal_padding"
             android:layout_marginTop="@dimen/forecast_detail_upper_padding"
             android:textSize="@dimen/forecast_text_size"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/detail_accent_label"/>
+            style="@style/DetailLabel"/>
 
+        <!-- Replace the appropriate attributes with the ExtraWeatherMeasurement style -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             tools:text="998 hPa"
             android:id="@+id/pressure"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintBaseline_toBaselineOf="@+id/pressure_label"
             android:textSize = "@dimen/forecast_text_size"
-            android:textColor="@color/white"/>
+            style="@style/ExtraWeatherMeasurement"/>
 
+        <!-- Replace the appropriate attributes with the DetailLabel style -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/wind_label"
             android:id="@+id/wind_label"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -82,18 +75,16 @@
             android:layout_marginStart="@dimen/forecast_detail_horizontal_padding"
             android:layout_marginTop="@dimen/forecast_detail_upper_padding"
             android:textSize="@dimen/forecast_text_size"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/detail_accent_label"/>
+            style="@style/DetailLabel"/>
 
+        <!-- Replace the appropriate attributes with the ExtraWeatherMeasurement style -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             tools:text="3 km/h SW"
             android:id="@+id/wind"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintBaseline_toBaselineOf="@+id/wind_label"
             android:textSize = "@dimen/forecast_text_size"
-            android:textColor="@color/white"/>
+            style="@style/ExtraWeatherMeasurement"/>
 
     </android.support.constraint.ConstraintLayout>
 

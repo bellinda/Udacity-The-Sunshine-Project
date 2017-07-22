@@ -10,8 +10,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- Use AppTheme.Forecast as the MainActivity's new theme -->
         <activity android:name=".MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.Forecast">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,6 +6,7 @@
 <!-- Color the primary and secondary text appropriately -->
 <!-- Replace dimension values with @dimen resources -->
 <!-- Use sans-serif-light font family for the temperature TextViews -->
+<!-- Use touch_selector as the background for the list item -->
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,7 +17,8 @@
     android:paddingBottom="@dimen/list_item_padding_vertical"
     android:paddingLeft="@dimen/list_item_padding_horizontal"
     android:paddingRight="@dimen/list_item_padding_horizontal"
-    android:paddingTop="@dimen/list_item_padding_vertical">
+    android:paddingTop="@dimen/list_item_padding_vertical"
+    android:background="@drawable/touch_selector">
     
     <ImageView
         android:layout_width="@dimen/list_icon"

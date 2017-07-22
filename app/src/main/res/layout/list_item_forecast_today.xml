@@ -3,6 +3,7 @@
 <!-- Color the background for today's weather data appropriately -->
 <!-- Replace dimension values with @dimen resources -->
 <!-- Use sans-serif-light font family for the temperature TextViews -->
+<!-- Replace the background color for the today list item with today_touch_selector -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/today_touch_selector">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
